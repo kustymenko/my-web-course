@@ -9,6 +9,15 @@ function pyramid(n) {
   }
 }
 
+// Ялинка: крона — це pyramid(n), стовбур — один блок по центру
+function christmasTree(n) {
+  pyramid(n);
+  console.log(' '.repeat(n - 1) + '█');
+}
+
 // Демо фігур
 console.log('pyramid(4):');
 pyramid(4);
+
+console.log('christmasTree(3):');
+christmasTree(3);

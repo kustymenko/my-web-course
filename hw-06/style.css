@@ -1,0 +1,49 @@
+/* Box model: однакове обчислення розмірів для всіх елементів */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Типографіка */
+body {
+  margin: 0;
+  font-family: 'Nunito', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  margin: 0 0 1rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+/* Контейнер по центру */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Однакові вертикальні відступи між секціями */
+main > section {
+  padding: 3rem 0;
+}

@@ -47,3 +47,98 @@ p {
 main > section {
   padding: 3rem 0;
 }
+
+/* Кольори: акцент (бурштиновий) + нейтральні */
+body {
+  background-color: #fffbeb;
+  color: #292524;
+}
+
+h1,
+h2,
+h3 {
+  color: #292524;
+}
+
+a {
+  color: #b45309;
+  text-decoration: underline;
+}
+
+a:hover,
+a:focus {
+  color: #78350f;
+}
+
+/* Шапка */
+.site-header {
+  background-color: #fef3c7;
+  border-bottom: 2px solid #b45309;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.brand {
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+/* Вкладений селектор: лише посилання в навігації */
+nav a {
+  margin-left: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Hero: селектор за id */
+#hero {
+  text-align: center;
+}
+
+#hero img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem auto 0;
+  border: 3px solid #b45309;
+  border-radius: 12px;
+}
+
+/* Списки: перший пункт виділено псевдокласом */
+#features li:first-child {
+  font-weight: 700;
+}
+
+#features ul,
+#features ol {
+  padding-left: 1.5rem;
+}
+
+/* FAQ */
+details {
+  background-color: #fef3c7;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+details p {
+  margin: 0.75rem 0 0;
+}

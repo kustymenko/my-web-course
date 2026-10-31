@@ -1,3 +1,4 @@
+# Залежності
 node_modules/
 .env
 .env.local

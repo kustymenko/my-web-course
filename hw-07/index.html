@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopy — каталог товарів</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body id="top">
+    <header class="site-header">
+      <a href="#top" class="logo">Shopy</a>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="#catalog">Каталог</a></li>
+          <li><a href="#catalog">Новинки</a></li>
+          <li><a href="#catalog">Знижки</a></li>
+          <li><a href="#contacts">Контакти</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <h1 class="page-title">Каталог товарів</h1>
+      <section id="catalog" class="cards" aria-label="Список товарів">
+        <article class="card">
+          <div class="card__media">
+            <img
+              src="images/cart.webp"
+              alt="Фіолетовий торговий візок на чорному тлі"
+              width="640"
+              height="640"
+            />
+          </div>
+          <span class="badge badge--new">NEW</span>
+          <button
+            type="button"
+            class="heart"
+            aria-label="Додати «Фіолетовий візок» в обране"
+          ></button>
+          <div class="card__body">
+            <ul class="swatches">
+              <li>
+                <button
+                  type="button"
+                  class="swatch swatch--dark is-active"
+                  aria-label="Колір: чорний"
+                ></button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="swatch swatch--purple"
+                  aria-label="Колір: фіолетовий"
+                ></button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="swatch swatch--red"
+                  aria-label="Колір: червоний"
+                ></button>
+              </li>
+            </ul>
+            <p class="card__category">Аксесуари</p>
+            <h2 class="card__title">Фіолетовий візок</h2>
+            <p class="rating">
+              <span class="rating__stars" aria-label="Рейтинг 4 з 5"
+                >★★★★☆</span
+              >
+              <span class="rating__count">32</span>
+            </p>
+            <p class="price">$1199</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card__media">
+            <img
+              src="images/smoke.webp"
+              alt="Фіолетовий дим на темному тлі"
+              width="640"
+              height="640"
+            />
+          </div>
+          <span class="badge badge--sale">-20%</span>
+          <button
+            type="button"
+            class="heart"
+            aria-label="Додати «Хмара світла» в обране"
+          ></button>
+          <div class="card__body">
+            <ul class="swatches">
+              <li>
+                <button
+                  type="button"
+                  class="swatch swatch--dark is-active"
+                  aria-label="Колір: чорний"
+                ></button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="swatch swatch--purple"
+                  aria-label="Колір: фіолетовий"
+                ></button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="swatch swatch--red"
+                  aria-label="Колір: червоний"
+                ></button>
+              </li>
+            </ul>
+            <p class="card__category">Декор</p>
+            <h2 class="card__title">Хмара світла</h2>
+            <p class="rating">
+              <span class="rating__stars" aria-label="Рейтинг 5 з 5"
+                >★★★★★</span
+              >
+              <span class="rating__count">18</span>
+            </p>
+            <p class="price">$89 <s class="price__old">$110</s></p>
+          </div>
+        </article>
+        <article class="card card--simple">
+          <div class="card__media">
+            <img
+              src="images/ink.webp"
+              alt="Чорно-біла абстракція з розбризкуванням чорнила"
+              width="640"
+              height="640"
+            />
+          </div>
+          <span class="badge badge--dark">NEW</span>
+          <div class="card__body">
+            <p class="card__category">Теплі речі</p>
+            <h2 class="card__title">Графічний принт</h2>
+            <p class="card__desc">Принт для футболки з абстрактним малюнком</p>
+            <p class="price">$9.99</p>
+          </div>
+          <button
+            type="button"
+            class="add-btn"
+            aria-label="Додати «Графічний принт» у кошик"
+          >
+            +
+          </button>
+        </article>
+        <article class="card">
+          <div class="card__media">
+            <img
+              src="images/cart.webp"
+              alt="Фіолетовий торговий візок на чорному тлі"
+              width="640"
+              height="640"
+            />
+          </div>
+          <span class="badge badge--new">NEW</span>
+          <button
+            type="button"
+            class="heart"
+            aria-label="Додати «Фіолетовий візок» в обране"
+          ></button>
+          <div class="card__body">
+            <ul class="swatches">
+              <li>
+                <button
+                  type="button"
+                  class="swatch swatch--dark is-active"
+                  aria-label="Колір: чорний"
+                ></button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="swatch swatch--purple"
+                  aria-label="Колір: фіолетовий"
+                ></button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="swatch swatch--red"
+                  aria-label="Колір: червоний"
+                ></button>
+              </li>
+            </ul>
+            <p class="card__category">Аксесуари</p>
+            <h2 class="card__title">Фіолетовий візок</h2>
+            <p class="rating">
+              <span class="rating__stars" aria-label="Рейтинг 4 з 5"
+                >★★★★☆</span
+              >
+              <span class="rating__count">32</span>
+            </p>
+            <p class="price">$1199</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card__media">
+            <img
+              src="images/smoke.webp"
+              alt="Фіолетовий дим на темному тлі"
+              width="640"
+              height="640"
+            />
+          </div>
+          <span class="badge badge--sale">-20%</span>
+          <button
+            type="button"
+            class="heart"
+            aria-label="Додати «Хмара світла» в обране"
+          ></button>
+          <div class="card__body">
+            <ul class="swatches">
+              <li>
+                <button
+                  type="button"
+                  class="swatch swatch--dark is-active"
+                  aria-label="Колір: чорний"
+                ></button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="swatch swatch--purple"
+                  aria-label="Колір: фіолетовий"
+                ></button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="swatch swatch--red"
+                  aria-label="Колір: червоний"
+                ></button>
+              </li>
+            </ul>
+            <p class="card__category">Декор</p>
+            <h2 class="card__title">Хмара світла</h2>
+            <p class="rating">
+              <span class="rating__stars" aria-label="Рейтинг 5 з 5"
+                >★★★★★</span
+              >
+              <span class="rating__count">18</span>
+            </p>
+            <p class="price">$89 <s class="price__old">$110</s></p>
+          </div>
+        </article>
+        <article class="card card--simple">
+          <div class="card__media">
+            <img
+              src="images/ink.webp"
+              alt="Чорно-біла абстракція з розбризкуванням чорнила"
+              width="640"
+              height="640"
+            />
+          </div>
+          <span class="badge badge--dark">NEW</span>
+          <div class="card__body">
+            <p class="card__category">Теплі речі</p>
+            <h2 class="card__title">Графічний принт</h2>
+            <p class="card__desc">Принт для футболки з абстрактним малюнком</p>
+            <p class="price">$9.99</p>
+          </div>
+          <button
+            type="button"
+            class="add-btn"
+            aria-label="Додати «Графічний принт» у кошик"
+          >
+            +
+          </button>
+        </article>
+      </section>
+    </main>
+
+    <footer id="contacts" class="site-footer">
+      <p>&copy; 2026 Shopy. Навчальний макет.</p>
+      <p>
+        Зв'язок: <a href="mailto:hello@shopy.example">hello@shopy.example</a>
+      </p>
+    </footer>
+
+    <a href="#top" class="fab" aria-label="Нагору">↑</a>
+  </body>
+</html>

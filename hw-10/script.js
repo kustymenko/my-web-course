@@ -39,17 +39,33 @@ chessboard(4);
 // ===== Частина 2: шифр Цезаря =====
 
 const LATIN = 'abcdefghijklmnopqrstuvwxyz';
+const UKRAINIAN = 'абвгґдеєжзиіїйклмнопрстуфхцчшщьюя'; // 33 літери
+
+// Зсув літери в абетці; повертає null, якщо символу в абетці немає
+function shiftInAlphabet(char, shift, alphabet) {
+  const size = alphabet.length;
+  const lowerIndex = alphabet.indexOf(char);
+  if (lowerIndex !== -1) {
+    // ((x % n) + n) % n — щоб від'ємний зсув теж працював (z + 1 → a, я + 1 → а)
+    return alphabet[(((lowerIndex + shift) % size) + size) % size];
+  }
+  const upperAlphabet = alphabet.toUpperCase();
+  const upperIndex = upperAlphabet.indexOf(char);
+  if (upperIndex !== -1) {
+    return upperAlphabet[(((upperIndex + shift) % size) + size) % size];
+  }
+  return null;
+}
 
 // Зсув одного символу; не-літери повертаємо без змін, регістр зберігаємо
 function shiftChar(char, shift) {
-  const lowerIndex = LATIN.indexOf(char);
-  if (lowerIndex !== -1) {
-    // ((x % n) + n) % n — щоб від'ємний зсув теж працював (z + 1 → a)
-    return LATIN[(((lowerIndex + shift) % 26) + 26) % 26];
+  const latin = shiftInAlphabet(char, shift, LATIN);
+  if (latin !== null) {
+    return latin;
   }
-  const upperIndex = LATIN.toUpperCase().indexOf(char);
-  if (upperIndex !== -1) {
-    return LATIN.toUpperCase()[(((upperIndex + shift) % 26) + 26) % 26];
+  const ukrainian = shiftInAlphabet(char, shift, UKRAINIAN);
+  if (ukrainian !== null) {
+    return ukrainian;
   }
   return char;
 }
@@ -84,3 +100,8 @@ console.log('decrypt(encrypt("Test", 7), 7):', decrypt(encrypt('Test', 7), 7));
 
 console.log('bruteForce("Fdhvdu"):');
 bruteForce('Fdhvdu');
+
+// Демо: українська абетка (бонус)
+console.log('encrypt("Привіт", 1):', encrypt('Привіт', 1));
+console.log('encrypt("яблуко", 2):', encrypt('яблуко', 2));
+console.log('decrypt("Рсігїу", 1):', decrypt('Рсігїу', 1));

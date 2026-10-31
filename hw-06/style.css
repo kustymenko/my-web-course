@@ -142,3 +142,106 @@ summary {
 details p {
   margin: 0.75rem 0 0;
 }
+
+/* Таблиця тарифів */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+}
+
+caption {
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #b45309;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 0.75rem 1rem;
+  border: 1px solid #d6d3d1;
+  text-align: left;
+}
+
+thead th {
+  background-color: #b45309;
+  color: #ffffff;
+}
+
+tbody th {
+  background-color: #fef3c7;
+}
+
+/* Форма: label над полем, однакова ширина полів */
+.signup-form {
+  max-width: 480px;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border: 1px solid #d6d3d1;
+  border-radius: 12px;
+}
+
+.signup-form label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 700;
+}
+
+.signup-form input[type='text'],
+.signup-form input[type='email'],
+.signup-form input[type='tel'],
+.signup-form select,
+.signup-form textarea {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  font: inherit;
+  border: 1px solid #a8a29e;
+  border-radius: 6px;
+}
+
+.signup-form input:focus,
+.signup-form select:focus,
+.signup-form textarea:focus {
+  outline: 2px solid #b45309;
+  border-color: #b45309;
+}
+
+/* Радіо та чекбокс: підпис поруч з полем */
+.signup-form input[type='radio'] + label,
+.signup-form input[type='checkbox'] + label {
+  display: inline;
+  font-weight: 400;
+}
+
+.signup-form fieldset {
+  margin: 0 0 1rem;
+  border: 1px solid #d6d3d1;
+  border-radius: 6px;
+}
+
+/* Footer: темний фон, світлий текст */
+.site-footer {
+  margin-top: 3rem;
+  padding: 2rem 0;
+  background-color: #292524;
+  color: #fef3c7;
+}
+
+.site-footer a {
+  color: #fcd34d;
+}
+
+.site-footer a:hover {
+  color: #ffffff;
+}
+
+.site-footer ul {
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

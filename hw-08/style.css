@@ -23,7 +23,13 @@ body {
   font-size: 1rem;
   line-height: 1.6;
   color: var(--color-text);
+  position: relative;
   background-color: var(--color-bg);
+  background-image: linear-gradient(
+    180deg,
+    rgba(227, 255, 248, 0) 82%,
+    rgba(227, 255, 248, 0.38) 100%
+  );
 }
 
 /* Контейнер: 1280px з відступами 120px з боків, як у макеті */
@@ -129,4 +135,49 @@ main {
   max-width: 28rem;
   margin: 0 0 3rem;
   color: var(--color-text-light);
+}
+
+/* CTA: зелена кнопка з іконкою */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem 0.9375rem;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.6;
+  color: #f9f9f9;
+  text-decoration: none;
+  background-color: var(--color-cta);
+  border-radius: 0.25rem;
+}
+
+/* Footer */
+.site-footer {
+  padding: 2rem 1rem;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+/* Декор: точковий патерн у правому нижньому куті (як balls-decoration у макеті) */
+body::after {
+  content: '';
+  position: absolute;
+  right: 0.75rem;
+  bottom: 1rem;
+  width: 6rem;
+  height: 5.5rem;
+  background-image: radial-gradient(
+    circle,
+    var(--color-primary) 3px,
+    transparent 3px
+  );
+  background-size: 1.1rem 1.1rem;
+  opacity: 0.3;
+  pointer-events: none;
 }

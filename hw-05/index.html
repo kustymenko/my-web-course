@@ -96,6 +96,84 @@
           </tbody>
         </table>
       </section>
+
+      <section id="faq">
+        <h2>Поширені запитання</h2>
+        <details>
+          <summary>Чи можна користуватися BookNook безкоштовно?</summary>
+          <p>
+            Так, безкоштовний тариф дозволяє додати до 50 книг і залишається
+            безкоштовним без обмежень у часі.
+          </p>
+        </details>
+        <details>
+          <summary>Чи можна імпортувати список книг з іншого сервісу?</summary>
+          <p>
+            Так, ти можеш завантажити список у форматі CSV, і книги з'являться
+            на твоїй полиці.
+          </p>
+        </details>
+        <details>
+          <summary>Як змінити тариф?</summary>
+          <p>
+            Тариф можна змінити в будь-який момент у налаштуваннях акаунта.
+            Оплата перераховується пропорційно.
+          </p>
+        </details>
+      </section>
+
+      <section id="signup">
+        <h2>Підписка</h2>
+        <form action="#" method="post">
+          <p>
+            <label for="name">Ім'я</label>
+            <input type="text" id="name" name="name" required />
+          </p>
+          <p>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+          </p>
+          <p>
+            <label for="phone">Телефон</label>
+            <input type="tel" id="phone" name="phone" />
+          </p>
+          <p>
+            <label for="plan">Тариф</label>
+            <select id="plan" name="plan">
+              <option value="free">Безкоштовний</option>
+              <option value="reader">Читач</option>
+              <option value="bibliophile">Бібліофіл</option>
+            </select>
+          </p>
+          <fieldset>
+            <legend>Формат сповіщень</legend>
+            <input
+              type="radio"
+              id="notify-email"
+              name="notify"
+              value="email"
+              checked
+            />
+            <label for="notify-email">Email</label>
+            <input
+              type="radio"
+              id="notify-telegram"
+              name="notify"
+              value="telegram"
+            />
+            <label for="notify-telegram">Телеграм</label>
+          </fieldset>
+          <p>
+            <input type="checkbox" id="agree" name="agree" required />
+            <label for="agree">Я погоджуюся з умовами використання</label>
+          </p>
+          <p>
+            <label for="message">Побажання</label>
+            <textarea id="message" name="message" rows="4"></textarea>
+          </p>
+          <button type="submit">Підписатися</button>
+        </form>
+      </section>
     </main>
 
     <footer>

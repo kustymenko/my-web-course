@@ -225,6 +225,11 @@ body::after {
     margin-bottom: 2rem;
   }
 
+  /* на вузькому екрані переноси рядків робить браузер */
+  .hero__desc br {
+    display: none;
+  }
+
   .btn {
     justify-content: center;
     width: 100%;

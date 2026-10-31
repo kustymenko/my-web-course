@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "Домашні завдання курсу «Вивчай» з веб-розробки",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kustymenko/my-web-course.git"
@@ -14,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/kustymenko/my-web-course/issues"
   },
-  "homepage": "https://github.com/kustymenko/my-web-course#readme"
+  "homepage": "https://github.com/kustymenko/my-web-course#readme",
+  "devDependencies": {
+    "prettier": "^3.9.10"
+  }
 }

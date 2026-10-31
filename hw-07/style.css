@@ -89,8 +89,7 @@ main {
 /* Картка: relative — відносно неї позиціонуються бейдж, серце, кнопка */
 .card {
   position: relative;
-  flex: 1 1 260px;
-  max-width: 300px;
+  flex: 0 1 270px;
   overflow: hidden;
   background-color: #ffffff;
   transition:
@@ -162,6 +161,10 @@ main {
 }
 
 /* Вибір кольору: абсолютно у верхній частині блоку */
+.card--simple .card__body {
+  padding-top: 12px;
+}
+
 .swatches {
   position: absolute;
   top: 12px;
@@ -325,7 +328,6 @@ main {
 
   .card {
     flex-basis: 100%;
-    max-width: none;
   }
 
   .site-footer {

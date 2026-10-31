@@ -132,7 +132,7 @@ console.log(
   passwordStrength(strongPassword).level,
 );
 console.log(
-  'generatePassword(8, лише цифри):',
+  'generatePassword(8, малі літери + цифри):',
   generatePassword(8, {
     useUppercase: false,
     useDigits: true,
@@ -140,3 +140,24 @@ console.log(
   }),
 );
 console.log('generatePassword(3, усі опції):', generatePassword(3, allOptions));
+
+// Бонус: нерівний поділ рахунку (напої — лише на тих, хто пив)
+function splitBillUneven(foodTotal, drinksTotal, people, drinkers, tipPercent) {
+  // Їжа — на всіх
+  const foodShare = foodTotal / people;
+  // Напої — на тих, хто пив
+  const drinksShare = drinkers > 0 ? drinksTotal / drinkers : 0;
+  // Чайові від (їжа + напої) — на всіх
+  const tipShare = ((foodTotal + drinksTotal) * tipPercent) / 100 / people;
+
+  const drinkerPays = Math.ceil(round2(foodShare + drinksShare + tipShare));
+  const nonDrinkerPays = Math.ceil(round2(foodShare + tipShare));
+
+  return { drinkerPays, nonDrinkerPays };
+}
+
+// Демо splitBillUneven
+console.log(
+  'splitBillUneven(800, 400, 4, 2, 10):',
+  splitBillUneven(800, 400, 4, 2, 10),
+);

@@ -80,3 +80,63 @@ console.log(
   'passwordStrength("Vechir#Kavi2026"):',
   passwordStrength('Vechir#Kavi2026'),
 );
+
+// 3. Генератор паролів
+// Випадковий символ із рядка
+function randomChar(chars) {
+  return chars[Math.floor(Math.random() * chars.length)];
+}
+
+function generatePassword(length, options) {
+  if (length < 4) {
+    return 'Помилка: мінімальна довжина пароля — 4';
+  }
+
+  const { useUppercase, useDigits, useSymbols } = options || {};
+
+  const lower = 'abcdefghijklmnopqrstuvwxyz';
+  const upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const digits = '0123456789';
+  const symbols = '!@#$%^&*';
+
+  // Малі літери — завжди; решта — за опціями
+  const sets = [lower];
+  if (useUppercase) sets.push(upper);
+  if (useDigits) sets.push(digits);
+  if (useSymbols) sets.push(symbols);
+
+  // Спочатку по одному символу кожного увімкненого типу — гарантія
+  const chars = sets.map(randomChar);
+
+  // Решту довжини добираємо з усіх дозволених символів
+  const allChars = sets.join('');
+  while (chars.length < length) {
+    chars.push(randomChar(allChars));
+  }
+
+  // Перемішуємо (Фішера — Єйтса), щоб гарантовані символи не стояли на початку
+  for (let i = chars.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [chars[i], chars[j]] = [chars[j], chars[i]];
+  }
+
+  return chars.join('');
+}
+
+// Демо generatePassword
+const allOptions = { useUppercase: true, useDigits: true, useSymbols: true };
+const strongPassword = generatePassword(12, allOptions);
+console.log('generatePassword(12, усі опції):', strongPassword);
+console.log(
+  'passwordStrength для нього:',
+  passwordStrength(strongPassword).level,
+);
+console.log(
+  'generatePassword(8, лише цифри):',
+  generatePassword(8, {
+    useUppercase: false,
+    useDigits: true,
+    useSymbols: false,
+  }),
+);
+console.log('generatePassword(3, усі опції):', generatePassword(3, allOptions));

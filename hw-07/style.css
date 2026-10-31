@@ -128,6 +128,7 @@ main {
   top: 4px;
   left: 4px;
   background-color: #000000;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
 }
 
 .badge--sale {
@@ -148,6 +149,9 @@ main {
   border: none;
   border-radius: 50%;
   cursor: pointer;
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
 }
 
 .heart::before {
@@ -258,20 +262,26 @@ main {
   text-decoration: underline;
 }
 
-/* Зірки: заповнена частина чорна, решта світло-сіра (рейтинг 4,5 з 5) */
+/* Зірки: сірий шар, поверх нього чорний обрізаний за шириною (4,5 з 5 = 90%) */
 .rating__stars {
-  letter-spacing: 1px;
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
+  position: relative;
+  display: inline-block;
+  color: #cfcfcf;
+  white-space: nowrap;
 }
 
-.rating__stars--45 {
-  background-image: linear-gradient(90deg, #000000 90%, #cfcfcf 90%);
+.rating__stars::before {
+  content: '★★★★★';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  color: #000000;
 }
 
-.rating__stars--50 {
-  background-image: linear-gradient(90deg, #000000 100%, #cfcfcf 100%);
+.rating__stars--45::before {
+  width: 90%;
 }
 
 .price {
@@ -309,18 +319,13 @@ main {
   border: none;
   border-radius: 50%;
   cursor: pointer;
+  transition: background-color 0.2s;
 }
 
 /* Hover: картка піднімається, серце змінює колір */
 .card:hover {
   transform: translateY(-6px);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-}
-
-.heart {
-  transition:
-    background-color 0.2s,
-    transform 0.2s;
 }
 
 .heart:hover {
@@ -331,10 +336,6 @@ main {
 .heart:hover::before {
   content: '♥';
   color: #ffffff;
-}
-
-.add-btn {
-  transition: background-color 0.2s;
 }
 
 .add-btn:hover {

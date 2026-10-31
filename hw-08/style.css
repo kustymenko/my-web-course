@@ -75,6 +75,12 @@ body {
   color: var(--color-nav);
   text-decoration: none;
   opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--color-primary);
+  opacity: 1;
 }
 
 /* Активний пункт «Home» — жирний */
@@ -151,6 +157,12 @@ main {
   text-decoration: none;
   background-color: var(--color-cta);
   border-radius: 0.25rem;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #55a487;
+  transform: scale(1.05);
 }
 
 /* Footer */
@@ -180,4 +192,41 @@ body::after {
   background-size: 1.1rem 1.1rem;
   opacity: 0.3;
   pointer-events: none;
+}
+
+/* Адаптив: до 768px hero в одну колонку */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  .site-header {
+    padding-top: 1.5rem;
+  }
+
+  .nav-list {
+    gap: 1.25rem;
+  }
+
+  .hero {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .hero__text {
+    align-self: stretch;
+  }
+
+  .hero__title {
+    font-size: 2rem;
+  }
+
+  .hero__desc {
+    margin-bottom: 2rem;
+  }
+
+  .btn {
+    justify-content: center;
+    width: 100%;
+  }
 }

@@ -1,1 +1,132 @@
-/* стилі додаються далі */
+/* Змінні з макета */
+:root {
+  --color-primary: #89c5cc;
+  --color-cta: #69b99d;
+  --color-text: #000000;
+  --color-text-light: #7d7987;
+  --color-nav: #1f1534;
+  --color-bg: #ffffff;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+/* Контейнер: 1280px з відступами 120px з боків, як у макеті */
+.container {
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 7.5rem;
+}
+
+/* Header: логотип ліворуч, меню праворуч */
+.site-header {
+  padding-top: 4rem;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.nav-list {
+  display: flex;
+  gap: 3rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-link {
+  font-family: 'Mulish', Arial, sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.3;
+  color: var(--color-nav);
+  text-decoration: none;
+  opacity: 0.5;
+}
+
+/* Активний пункт «Home» — жирний */
+.nav-link--active {
+  font-weight: 700;
+  opacity: 1;
+}
+
+main {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+/* Hero: дві колонки 50/50 */
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.hero__text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.hero__image {
+  flex: 1;
+}
+
+.hero__image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hero__title {
+  margin: 0 0 1rem;
+  font-family: 'Mulish', Arial, sans-serif;
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+/* Слово EXCLUSIVE — акцентним кольором */
+.accent {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.hero__desc {
+  max-width: 28rem;
+  margin: 0 0 3rem;
+  color: var(--color-text-light);
+}

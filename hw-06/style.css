@@ -11,6 +11,8 @@ body {
   font-family: 'Nunito', Arial, sans-serif;
   font-size: 16px;
   line-height: 1.6;
+  background-color: #fffbeb;
+  color: #292524;
 }
 
 h1,
@@ -18,6 +20,7 @@ h2,
 h3 {
   line-height: 1.2;
   margin: 0 0 1rem;
+  color: #292524;
 }
 
 h1 {
@@ -49,17 +52,6 @@ main > section {
 }
 
 /* Кольори: акцент (бурштиновий) + нейтральні */
-body {
-  background-color: #fffbeb;
-  color: #292524;
-}
-
-h1,
-h2,
-h3 {
-  color: #292524;
-}
-
 a {
   color: #b45309;
   text-decoration: underline;
@@ -151,7 +143,7 @@ table {
 }
 
 caption {
-  padding: 0.75rem;
+  padding: 0.75rem 0;
   font-size: 1.1rem;
   font-weight: 800;
   color: #b45309;

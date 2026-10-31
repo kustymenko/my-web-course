@@ -82,3 +82,173 @@ main {
 .site-footer p {
   margin: 0 0 4px;
 }
+
+/* Картка: relative — відносно неї позиціонуються бейдж, серце, кнопка */
+.card {
+  position: relative;
+  flex: 1 1 260px;
+  max-width: 300px;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.card__media {
+  aspect-ratio: 1 / 1;
+}
+
+.card__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Бейдж у лівому верхньому куті поверх фото */
+.badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 2;
+  padding: 4px 8px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #f9f9f9;
+}
+
+.badge--new {
+  background-color: #00990f;
+}
+
+.badge--dark {
+  background-color: #000000;
+}
+
+.badge--sale {
+  background-color: #e0342c;
+}
+
+/* Серце «в обране» у правому верхньому куті поверх фото */
+.heart {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  font-size: 0;
+  background-color: #f3f3f3;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.heart::before {
+  content: '♡';
+  font-size: 18px;
+  line-height: 28px;
+  color: #1c1c1c;
+}
+
+.card__body {
+  position: relative;
+  padding: 44px 12px 16px;
+}
+
+/* Вибір кольору: абсолютно у верхній частині блоку */
+.swatches {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.swatch {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px #d0d0d0;
+  cursor: pointer;
+}
+
+.swatch.is-active {
+  box-shadow: 0 0 0 2px #1c1c1c;
+}
+
+.swatch--dark {
+  background-color: #1c1c1c;
+}
+
+.swatch--purple {
+  background-color: #803b90;
+}
+
+.swatch--red {
+  background-color: #e0342c;
+}
+
+.card__category {
+  margin: 0;
+  font-size: 10px;
+  color: #979797;
+  text-transform: uppercase;
+}
+
+.card__title {
+  margin: 2px 0 4px;
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.card__desc {
+  margin: 0 0 8px;
+  font-size: 12px;
+  color: #979797;
+}
+
+/* Рейтинг під назвою */
+.rating {
+  margin: 0 0 8px;
+  font-size: 14px;
+}
+
+.rating__stars {
+  letter-spacing: 1px;
+}
+
+.price {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.price__old {
+  margin-left: 6px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #979797;
+}
+
+/* Кругла кнопка «додати» у правому нижньому куті */
+.add-btn {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  font-size: 24px;
+  line-height: 1;
+  color: #ffffff;
+  background-color: #6e47e5;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}

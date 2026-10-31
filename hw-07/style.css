@@ -19,6 +19,9 @@ a {
 
 /* Шапка: flex з переносом */
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -90,6 +93,9 @@ main {
   max-width: 300px;
   overflow: hidden;
   background-color: #ffffff;
+  transition:
+    transform 0.25s,
+    box-shadow 0.25s;
 }
 
 .card__media {
@@ -251,4 +257,78 @@ main {
   border: none;
   border-radius: 50%;
   cursor: pointer;
+}
+
+/* Hover: картка піднімається, серце змінює колір */
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.heart {
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
+}
+
+.heart:hover {
+  background-color: #e0342c;
+  transform: scale(1.1);
+}
+
+.heart:hover::before {
+  content: '♥';
+  color: #ffffff;
+}
+
+.add-btn {
+  transition: background-color 0.2s;
+}
+
+.add-btn:hover {
+  background-color: #5636c4;
+}
+
+/* Кнопка «нагору» завжди в куті вікна */
+.fab {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  font-size: 24px;
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #6e47e5;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.2s;
+}
+
+.fab:hover {
+  background-color: #5636c4;
+}
+
+/* Мобільний: одна колонка */
+@media (max-width: 600px) {
+  .site-header {
+    padding: 12px 16px;
+  }
+
+  main {
+    padding: 24px 16px 40px;
+  }
+
+  .card {
+    flex-basis: 100%;
+    max-width: none;
+  }
+
+  .site-footer {
+    padding: 24px 16px;
+  }
 }

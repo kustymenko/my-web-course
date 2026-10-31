@@ -221,9 +221,17 @@ main {
   color: #979797;
 }
 
-/* Рейтинг під назвою */
+/* Заголовок з рейтингом: рейтинг абсолютно під назвою */
+.card__head {
+  position: relative;
+  padding-bottom: 28px;
+}
+
 .rating {
-  margin: 0 0 8px;
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  margin: 0;
   font-size: 14px;
 }
 

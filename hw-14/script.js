@@ -11,6 +11,9 @@ const clearButton = document.getElementById('clear-completed');
 // Масив — єдине джерело правди: { id, text, completed }
 let items = loadItems();
 let currentFilter = 'all';
+// id книги, яку зараз редагують, та остання книга, статус якої змінив клік по назві
+let editingId = null;
+let lastToggledId = null;
 
 function loadItems() {
   try {
@@ -72,10 +75,19 @@ function render() {
     checkbox.checked = item.completed;
     checkbox.setAttribute('aria-label', `Прочитано: ${item.text}`);
 
-    // Текст вставляємо через textContent, щоб не виконати чужу розмітку
-    const text = document.createElement('span');
-    text.className = 'item__text';
-    text.textContent = item.text;
+    // Текст вставляємо через textContent/value, щоб не виконати чужу розмітку
+    let text;
+    if (item.id === editingId) {
+      text = document.createElement('input');
+      text.type = 'text';
+      text.className = 'edit';
+      text.value = item.text;
+      text.setAttribute('aria-label', 'Нова назва книги');
+    } else {
+      text = document.createElement('span');
+      text.className = 'item__text';
+      text.textContent = item.text;
+    }
 
     const deleteButton = document.createElement('button');
     deleteButton.type = 'button';
@@ -86,6 +98,13 @@ function render() {
     li.append(checkbox, text, deleteButton);
     list.append(li);
   });
+
+  // Під час редагування ставимо фокус у поле й виділяємо текст
+  const editInput = list.querySelector('.edit');
+  if (editInput) {
+    editInput.focus();
+    editInput.select();
+  }
 
   emptyMessage.hidden = visible.length > 0;
 
@@ -142,7 +161,65 @@ list.addEventListener('click', (e) => {
   } else if (e.target.matches('input[type="checkbox"]')) {
     toggleItem(id);
   } else if (e.target.closest('.item__text')) {
+    // Другий клік подвійного натискання не перемикає статус: далі спрацює dblclick
+    if (e.detail > 1) {
+      return;
+    }
+    lastToggledId = id;
     toggleItem(id);
+  }
+});
+
+// Редагування: подвійний клік по назві
+list.addEventListener('dblclick', (e) => {
+  const li = e.target.closest('.item');
+  if (!li || !e.target.closest('.item__text')) {
+    return;
+  }
+  // Перший клік подвійного вже перемкнув статус — повертаємо його назад
+  const id = lastToggledId ?? Number(li.dataset.id);
+  lastToggledId = null;
+  toggleItem(id);
+  editingId = id;
+  render();
+});
+
+// Завершення редагування: зберегти нову назву (порожня — видалити книгу)
+function finishEdit(value) {
+  if (editingId === null) {
+    return;
+  }
+  const id = editingId;
+  editingId = null;
+  const text = value.trim();
+  if (text === '') {
+    items = items.filter((entry) => entry.id !== id);
+  } else {
+    items.find((entry) => entry.id === id).text = text;
+  }
+  update();
+}
+
+function cancelEdit() {
+  editingId = null;
+  render();
+}
+
+list.addEventListener('keydown', (e) => {
+  if (!e.target.matches('.edit')) {
+    return;
+  }
+  if (e.key === 'Enter') {
+    finishEdit(e.target.value);
+  } else if (e.key === 'Escape') {
+    cancelEdit();
+  }
+});
+
+// blur не спливає, тому для делегування використовуємо focusout
+list.addEventListener('focusout', (e) => {
+  if (e.target.matches('.edit')) {
+    finishEdit(e.target.value);
   }
 });
 

@@ -18,7 +18,7 @@ const clearButton = document.getElementById('clear-completed');
 const newCategory = document.getElementById('new-category');
 const categoryFilter = document.getElementById('category-filter');
 
-// Масив — єдине джерело правди: { id, text, completed }
+// Масив — єдине джерело правди: { id, text, completed, category }
 let items = loadItems();
 let currentFilter = 'all';
 let currentCategory = 'all';

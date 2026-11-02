@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BookNook — мій каталог книг</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <p class="brand">BookNook</p>
+      <h1>Мій каталог книг</h1>
+
+      <form class="add-form" id="add-form">
+        <input
+          type="text"
+          id="new-item"
+          placeholder="Назва книги"
+          aria-label="Назва книги"
+          autocomplete="off"
+        />
+        <button type="submit" class="btn">Додати</button>
+      </form>
+
+      <div class="filters" id="filters" role="group" aria-label="Фільтр">
+        <button type="button" class="filter active" data-filter="all">
+          Всі
+        </button>
+        <button type="button" class="filter" data-filter="active">
+          Непрочитані
+        </button>
+        <button type="button" class="filter" data-filter="completed">
+          Прочитані
+        </button>
+      </div>
+
+      <ul class="list" id="list"></ul>
+      <p class="empty" id="empty" hidden>Тут поки порожньо</p>
+
+      <div class="summary">
+        <span id="counter"></span>
+        <button type="button" class="clear" id="clear-completed" hidden>
+          Очистити прочитані
+        </button>
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

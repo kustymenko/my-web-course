@@ -1,0 +1,209 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 2rem 1rem;
+  font-family: 'Nunito', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #292524;
+  background-color: #fffbeb;
+}
+
+/* Картка застосунку по центру */
+.app {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border: 1px solid #d6d3d1;
+  border-radius: 12px;
+}
+
+.brand {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #b45309;
+}
+
+h1 {
+  margin: 0 0 1.25rem;
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+/* Форма додавання: поле + кнопка */
+.add-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.add-form input[type='text'] {
+  flex: 1;
+  min-width: 0;
+  padding: 0.6rem 0.75rem;
+  font: inherit;
+  border: 1px solid #a8a29e;
+  border-radius: 6px;
+}
+
+.add-form input[type='text']:focus,
+.edit:focus {
+  outline: 2px solid #b45309;
+  border-color: #b45309;
+}
+
+.btn {
+  padding: 0.6rem 1.25rem;
+  font: inherit;
+  font-weight: 700;
+  color: #ffffff;
+  background-color: #b45309;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #78350f;
+}
+
+/* Фільтри */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.filter {
+  padding: 0.35rem 0.9rem;
+  font: inherit;
+  color: #292524;
+  background-color: #fef3c7;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.filter:hover {
+  border-color: #b45309;
+}
+
+.filter.active {
+  font-weight: 700;
+  color: #ffffff;
+  background-color: #b45309;
+}
+
+/* Список книг */
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.25rem;
+  border-bottom: 1px solid #e7e5e4;
+}
+
+.item input[type='checkbox'] {
+  flex-shrink: 0;
+  width: 1.15rem;
+  height: 1.15rem;
+  accent-color: #b45309;
+  cursor: pointer;
+}
+
+.item__text {
+  flex: 1;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+  user-select: none;
+}
+
+/* Прочитана книга: перекреслена й приглушена */
+.item.completed .item__text {
+  color: #a8a29e;
+  text-decoration: line-through;
+}
+
+.edit {
+  flex: 1;
+  min-width: 0;
+  padding: 0.3rem 0.5rem;
+  font: inherit;
+  border: 1px solid #a8a29e;
+  border-radius: 6px;
+}
+
+.delete {
+  padding: 0.1rem 0.5rem;
+  font-size: 1.1rem;
+  color: #a8a29e;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition:
+    color 0.2s,
+    background-color 0.2s;
+}
+
+.delete:hover {
+  color: #b91c1c;
+  background-color: #fee2e2;
+}
+
+.empty {
+  margin: 1rem 0;
+  color: #78716c;
+  text-align: center;
+}
+
+/* Низ: лічильник і кнопка очищення */
+.summary {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  font-weight: 700;
+}
+
+.clear {
+  padding: 0.3rem 0.75rem;
+  font: inherit;
+  font-size: 0.9rem;
+  color: #b45309;
+  background: none;
+  border: 1px solid #b45309;
+  border-radius: 6px;
+  cursor: pointer;
+  transition:
+    color 0.2s,
+    background-color 0.2s;
+}
+
+.clear:hover {
+  color: #ffffff;
+  background-color: #b45309;
+}
+
+/* Атрибут hidden не має програвати правилам display вище */
+[hidden] {
+  display: none !important;
+}

@@ -326,5 +326,24 @@
         </ul>
       </div>
     </footer>
+    <!-- Модальне вікно: overlay на весь екран, модалка — його дочірній елемент -->
+    <div class="overlay" id="modal-overlay">
+      <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <button type="button" class="modal__close" aria-label="Закрити">
+          &times;
+        </button>
+        <h2 id="modal-title"></h2>
+        <p class="modal__author"></p>
+        <p class="modal__text"></p>
+        <a href="#signup" class="btn modal__cta">Підписатися на BookNook</a>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
   </body>
 </html>

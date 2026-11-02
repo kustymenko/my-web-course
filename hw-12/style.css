@@ -304,3 +304,80 @@ tbody th {
 .book__status {
   flex: 1;
 }
+
+/* Блокування прокрутки сторінки, поки відкрита модалка */
+body.no-scroll {
+  overflow: hidden;
+}
+
+/* Модальне вікно: показ і анімація лише через CSS (клас .open) */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: rgba(41, 37, 36, 0.65);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.3s,
+    visibility 0s 0.3s;
+}
+
+.overlay.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition:
+    opacity 0.3s,
+    visibility 0s;
+}
+
+.modal {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  padding: 2rem;
+  overflow-y: auto;
+  background-color: #fffbeb;
+  border-top: 6px solid #b45309;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transform: translateY(24px) scale(0.95);
+  transition: transform 0.3s;
+}
+
+.overlay.open .modal {
+  transform: none;
+}
+
+.modal__close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  padding: 0 0.5rem;
+  font-size: 2rem;
+  line-height: 1.2;
+  color: #292524;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.modal__close:hover {
+  color: #b45309;
+}
+
+.modal__author {
+  font-style: italic;
+}
+
+.modal__cta {
+  display: inline-block;
+  text-decoration: none;
+}

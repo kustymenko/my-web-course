@@ -300,7 +300,8 @@ tbody th {
 
 /* Індикатор сили пароля: ширина і колір за рівнем */
 .strength {
-  display: none;
+  display: flex;
+  visibility: hidden;
   align-items: center;
   gap: 0.75rem;
   margin-top: 0.4rem;
@@ -309,7 +310,7 @@ tbody th {
 .strength--weak,
 .strength--medium,
 .strength--strong {
-  display: flex;
+  visibility: visible;
 }
 
 .strength__bar {

@@ -190,3 +190,59 @@ function bestYear(movies) {
   );
   return { year: Number(year), total: round2(total) };
 }
+
+// 6. Пошук за назвою: підрядок без урахування регістру
+function searchByTitle(movies, query) {
+  const q = query.toLowerCase();
+  return movies.filter((movie) => movie.title.toLowerCase().includes(q));
+}
+
+// 7. Випадкова рекомендація жанру з рейтингом строго вищим за minRating
+function recommend(movies, genre, minRating) {
+  const suitable = movies.filter(
+    (movie) => movie.genre === genre && movie.rating > minRating,
+  );
+  if (suitable.length === 0) {
+    return 'Нічого не знайдено';
+  }
+  return suitable[Math.floor(Math.random() * suitable.length)];
+}
+
+// Бонус: топ-3 драми 2010-х за касою — один ланцюжок без проміжних змінних
+function top3DramasOf2010s(movies) {
+  return movies
+    .filter(
+      (movie) =>
+        movie.genre === 'драма' && movie.year >= 2010 && movie.year <= 2019,
+    )
+    .sort((a, b) => b.boxOffice - a.boxOffice)
+    .slice(0, 3)
+    .map((movie) => movie.title);
+}
+
+// ===== Звіт для керівника =====
+console.log('===== Звіт для керівника =====');
+console.log('Топ-5 за рейтингом:', topRated(movies, 5));
+console.log('Топ-3 за рейтингом:', topRated(movies, 3));
+console.log(
+  'Вийшли після 2018:',
+  releasedAfter(movies, 2018).map((m) => m.title),
+);
+console.log('Вийшли після 2023:', releasedAfter(movies, 2023));
+console.log('Збори по жанрах (млн $):', boxOfficeByGenre(movies));
+console.log('Рейтинг Нолана:', directorRating(movies, 'Крістофер Нолан'));
+console.log('Рейтинг Кемерона:', directorRating(movies, 'Джеймс Кемерон'));
+console.log('Рейтинг Спілберга:', directorRating(movies, 'Спілберг'));
+console.log('Найкасовіший рік:', bestYear(movies));
+console.log(
+  'Пошук «ар»:',
+  searchByTitle(movies, 'ар').map((m) => m.title),
+);
+console.log(
+  'Пошук «МАВ»:',
+  searchByTitle(movies, 'МАВ').map((m) => m.title),
+);
+console.log('Пошук «хоббіт»:', searchByTitle(movies, 'хоббіт'));
+console.log('Рекомендація (драма, > 8.4):', recommend(movies, 'драма', 8.4));
+console.log('Рекомендація (анімація, > 9):', recommend(movies, 'анімація', 9));
+console.log('Бонус — топ-3 драми 2010-х:', top3DramasOf2010s(movies));

@@ -65,6 +65,38 @@ password.addEventListener('input', () => {
   }
 });
 
+// Бонус: індикатор сили пароля
+const strength = document.getElementById('strength');
+const strengthLabel = strength.querySelector('.strength__label');
+const strengthTexts = {
+  weak: 'Слабкий',
+  medium: 'Середній',
+  strong: 'Сильний',
+};
+
+function getStrength(value) {
+  if (value === '') {
+    return '';
+  }
+  if (value.length < 8 || !/\d/.test(value)) {
+    return 'weak';
+  }
+  // Сильний: ще й велика літера та спецсимвол (будь-який не буква, не цифра, не пробіл)
+  if (/\p{Lu}/u.test(value) && /[^\p{L}\p{N}\s]/u.test(value)) {
+    return 'strong';
+  }
+  return 'medium';
+}
+
+function updateStrength() {
+  const level = getStrength(password.value);
+  // Ширину і колір смуги задають CSS-класи
+  strength.className = level ? `strength strength--${level}` : 'strength';
+  strengthLabel.textContent = level ? strengthTexts[level] : '';
+}
+
+password.addEventListener('input', updateStrength);
+
 // Підписники: зберігаємо в localStorage масив { name, email, age, registeredAt }
 const STORAGE_KEY = 'subscribers';
 const subscribersList = document.getElementById('subscribers-list');
@@ -103,6 +135,7 @@ function renderSubscribers() {
 // Після успішної відправки: очистити форму і прибрати всі стани полів
 function resetForm() {
   form.reset();
+  updateStrength();
   fields.forEach((input) => {
     input.classList.remove('valid', 'invalid');
     input.removeAttribute('aria-invalid');

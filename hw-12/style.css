@@ -485,3 +485,9 @@ body.no-scroll {
 .table-wrap {
   overflow-x: auto;
 }
+
+/* Кнопка-посилання зберігає білий текст при наведенні (інакше його перебиває a:hover) */
+a.btn:hover,
+a.btn:focus {
+  color: #ffffff;
+}

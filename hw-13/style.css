@@ -184,6 +184,8 @@ tbody th {
 .signup-form input[type='text'],
 .signup-form input[type='email'],
 .signup-form input[type='tel'],
+.signup-form input[type='password'],
+.signup-form input[type='number'],
 .signup-form select,
 .signup-form textarea {
   display: block;

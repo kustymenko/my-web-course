@@ -1,5 +1,13 @@
 const STORAGE_KEY = 'booknook-items';
 
+// Категорії: назва → CSS-клас кольорової мітки
+const CATEGORIES = {
+  фантастика: 'sf',
+  детектив: 'detective',
+  'науково-популярна': 'science',
+  класика: 'classic',
+};
+
 const addForm = document.getElementById('add-form');
 const newItemInput = document.getElementById('new-item');
 const list = document.getElementById('list');
@@ -7,10 +15,13 @@ const emptyMessage = document.getElementById('empty');
 const filtersBox = document.getElementById('filters');
 const counter = document.getElementById('counter');
 const clearButton = document.getElementById('clear-completed');
+const newCategory = document.getElementById('new-category');
+const categoryFilter = document.getElementById('category-filter');
 
 // Масив — єдине джерело правди: { id, text, completed }
 let items = loadItems();
 let currentFilter = 'all';
+let currentCategory = 'all';
 // id книги, яку зараз редагують, та остання книга, статус якої змінив клік по назві
 let editingId = null;
 let lastToggledId = null;
@@ -36,13 +47,14 @@ function update() {
 
 // Книги, які проходять поточний фільтр
 function getVisibleItems() {
-  if (currentFilter === 'active') {
-    return items.filter((item) => !item.completed);
-  }
-  if (currentFilter === 'completed') {
-    return items.filter((item) => item.completed);
-  }
-  return items;
+  return items.filter((item) => {
+    const matchesStatus =
+      currentFilter === 'all' ||
+      (currentFilter === 'active' ? !item.completed : item.completed);
+    const matchesCategory =
+      currentCategory === 'all' || item.category === currentCategory;
+    return matchesStatus && matchesCategory;
+  });
 }
 
 // Відмінювання: 1 книга, 2 книги, 5 книг (11–14 — «книг»)
@@ -95,7 +107,17 @@ function render() {
     deleteButton.setAttribute('aria-label', `Видалити: ${item.text}`);
     deleteButton.textContent = '✕';
 
-    li.append(checkbox, text, deleteButton);
+    li.append(checkbox, text);
+
+    // Кольорова мітка категорії (у старих записів її може не бути)
+    if (item.category in CATEGORIES) {
+      const tag = document.createElement('span');
+      tag.className = `tag tag--${CATEGORIES[item.category]}`;
+      tag.textContent = item.category;
+      li.append(tag);
+    }
+
+    li.append(deleteButton);
     list.append(li);
   });
 
@@ -130,7 +152,12 @@ addForm.addEventListener('submit', (e) => {
   if (text === '') {
     return;
   }
-  items.push({ id: Date.now(), text, completed: false });
+  items.push({
+    id: Date.now(),
+    text,
+    completed: false,
+    category: newCategory.value,
+  });
   newItemInput.value = '';
   newItemInput.focus();
   update();
@@ -236,6 +263,18 @@ filtersBox.addEventListener('click', (e) => {
 clearButton.addEventListener('click', () => {
   items = items.filter((item) => !item.completed);
   update();
+});
+
+// Фільтр за категорією
+categoryFilter.addEventListener('change', () => {
+  currentCategory = categoryFilter.value;
+  render();
+});
+
+// Список категорій у обох select беремо з одного об'єкта CATEGORIES
+Object.keys(CATEGORIES).forEach((name) => {
+  newCategory.append(new Option(name, name));
+  categoryFilter.append(new Option(name, name));
 });
 
 render();

@@ -25,6 +25,7 @@
           aria-label="Назва книги"
           autocomplete="off"
         />
+        <select id="new-category" aria-label="Категорія"></select>
         <button type="submit" class="btn">Додати</button>
       </form>
 
@@ -38,6 +39,9 @@
         <button type="button" class="filter" data-filter="completed">
           Прочитані
         </button>
+        <select id="category-filter" aria-label="Фільтр за категорією">
+          <option value="all">Усі категорії</option>
+        </select>
       </div>
 
       <ul class="list" id="list"></ul>

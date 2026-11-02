@@ -4,18 +4,32 @@ const modalTitle = document.getElementById('modal-title');
 const modalAuthor = overlay.querySelector('.modal__author');
 const modalText = overlay.querySelector('.modal__text');
 
+// Кнопка-відкривач: після закриття фокус повертається на неї
+let lastOpener = null;
+
 function openModal(button) {
+  lastOpener = button;
   // Наповнюємо модалку даними з кнопки, на яку натиснули
   modalTitle.textContent = button.dataset.title;
   modalAuthor.textContent = button.dataset.author;
   modalText.textContent = button.dataset.description;
   overlay.classList.add('open');
   document.body.classList.add('no-scroll');
+  // Фокус на перший інтерактивний елемент модалки
+  getFocusable()[0].focus();
 }
 
 function closeModal() {
   overlay.classList.remove('open');
   document.body.classList.remove('no-scroll');
+  if (lastOpener) {
+    lastOpener.focus();
+  }
+}
+
+// Інтерактивні елементи всередині модалки
+function getFocusable() {
+  return [...overlay.querySelectorAll('button, a[href]')];
 }
 
 document.querySelectorAll('.open-modal').forEach((button) => {
@@ -36,6 +50,23 @@ overlay.addEventListener('click', (e) => {
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && overlay.classList.contains('open')) {
     closeModal();
+  }
+});
+
+// Фокус-пастка: Tab і Shift+Tab ходять колом лише всередині модалки
+overlay.addEventListener('keydown', (e) => {
+  if (e.key !== 'Tab') {
+    return;
+  }
+  const focusable = getFocusable();
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault();
+    last.focus();
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault();
+    first.focus();
   }
 });
 

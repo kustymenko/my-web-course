@@ -62,6 +62,127 @@
 
       <section id="books">
         <h2>Моя полиця</h2>
+        <div class="toolbar">
+          <div class="dropdown" data-key="category">
+            <button
+              type="button"
+              class="dropdown__toggle"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Категорія: <span class="dropdown__label">усі</span>
+            </button>
+            <ul class="dropdown__menu">
+              <li>
+                <button type="button" class="dropdown__item" data-value="all">
+                  усі
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="dropdown__item"
+                  data-value="фантастика"
+                >
+                  фантастика
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="dropdown__item"
+                  data-value="детектив"
+                >
+                  детектив
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="dropdown__item"
+                  data-value="науково-популярна"
+                >
+                  науково-популярна
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="dropdown__item"
+                  data-value="класика"
+                >
+                  класика
+                </button>
+              </li>
+            </ul>
+          </div>
+          <div class="dropdown" data-key="status">
+            <button
+              type="button"
+              class="dropdown__toggle"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Статус: <span class="dropdown__label">усі</span>
+            </button>
+            <ul class="dropdown__menu">
+              <li>
+                <button type="button" class="dropdown__item" data-value="all">
+                  усі
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="dropdown__item"
+                  data-value="хочу прочитати"
+                >
+                  хочу прочитати
+                </button>
+              </li>
+              <li>
+                <button type="button" class="dropdown__item" data-value="читаю">
+                  читаю
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="dropdown__item"
+                  data-value="прочитано"
+                >
+                  прочитано
+                </button>
+              </li>
+            </ul>
+          </div>
+          <div class="dropdown" data-key="sort">
+            <button
+              type="button"
+              class="dropdown__toggle"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Сортування: <span class="dropdown__label">за назвою</span>
+            </button>
+            <ul class="dropdown__menu">
+              <li>
+                <button type="button" class="dropdown__item" data-value="title">
+                  за назвою
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="dropdown__item"
+                  data-value="rating"
+                >
+                  за оцінкою
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
         <ul class="books">
           <li
             class="book"
@@ -184,6 +305,7 @@
             </button>
           </li>
         </ul>
+        <p class="books__empty" hidden>Нічого не знайдено</p>
       </section>
 
       <section id="pricing">

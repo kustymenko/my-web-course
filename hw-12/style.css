@@ -1,0 +1,306 @@
+/* Box model: однакове обчислення розмірів для всіх елементів */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Типографіка */
+body {
+  margin: 0;
+  font-family: 'Nunito', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  background-color: #fffbeb;
+  color: #292524;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  margin: 0 0 1rem;
+  color: #292524;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+/* Контейнер по центру */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Однакові вертикальні відступи між секціями */
+main > section {
+  padding: 3rem 0;
+}
+
+/* Кольори: акцент (бурштиновий) + нейтральні */
+a {
+  color: #b45309;
+  text-decoration: underline;
+}
+
+a:hover,
+a:focus {
+  color: #78350f;
+}
+
+/* Шапка */
+.site-header {
+  background-color: #fef3c7;
+  border-bottom: 2px solid #b45309;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.brand {
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+/* Вкладений селектор: лише посилання в навігації */
+nav a {
+  margin-left: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Hero: селектор за id */
+#hero {
+  text-align: center;
+}
+
+#hero img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem auto 0;
+  border: 3px solid #b45309;
+  border-radius: 12px;
+}
+
+/* Списки: перший пункт виділено псевдокласом */
+#features li:first-child {
+  font-weight: 700;
+}
+
+#features ul,
+#features ol {
+  padding-left: 1.5rem;
+}
+
+/* FAQ */
+details {
+  background-color: #fef3c7;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+details p {
+  margin: 0.75rem 0 0;
+}
+
+/* Таблиця тарифів */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+}
+
+caption {
+  padding: 0.75rem 0;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #b45309;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 0.75rem 1rem;
+  border: 1px solid #d6d3d1;
+  text-align: left;
+}
+
+thead th {
+  background-color: #b45309;
+  color: #ffffff;
+}
+
+tbody th {
+  background-color: #fef3c7;
+}
+
+/* Форма: label над полем, однакова ширина полів */
+.signup-form {
+  max-width: 480px;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border: 1px solid #d6d3d1;
+  border-radius: 12px;
+}
+
+.signup-form label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 700;
+}
+
+.signup-form input[type='text'],
+.signup-form input[type='email'],
+.signup-form input[type='tel'],
+.signup-form select,
+.signup-form textarea {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  font: inherit;
+  border: 1px solid #a8a29e;
+  border-radius: 6px;
+}
+
+.signup-form input:focus,
+.signup-form select:focus,
+.signup-form textarea:focus {
+  outline: 2px solid #b45309;
+  border-color: #b45309;
+}
+
+/* Радіо та чекбокс: підпис поруч з полем */
+.signup-form input[type='radio'] + label,
+.signup-form input[type='checkbox'] + label {
+  display: inline;
+  font-weight: 400;
+}
+
+.signup-form fieldset {
+  margin: 0 0 1rem;
+  border: 1px solid #d6d3d1;
+  border-radius: 6px;
+}
+
+/* Footer: темний фон, світлий текст */
+.site-footer {
+  margin-top: 3rem;
+  padding: 2rem 0;
+  background-color: #292524;
+  color: #fef3c7;
+}
+
+.site-footer a {
+  color: #fcd34d;
+}
+
+.site-footer a:hover {
+  color: #ffffff;
+}
+
+.site-footer ul {
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Кнопка форми */
+.btn {
+  padding: 0.75rem 1.75rem;
+  font: inherit;
+  font-weight: 700;
+  color: #ffffff;
+  background-color: #b45309;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    transform 0.2s;
+}
+
+.btn:hover {
+  background-color: #78350f;
+  transform: translateY(-2px);
+}
+
+/* Полиця: сітка карток книг */
+.books {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.book {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.25rem;
+  background-color: #fef3c7;
+  border-radius: 12px;
+}
+
+.book[hidden] {
+  display: none;
+}
+
+.book__category {
+  margin-bottom: 0.5rem;
+  padding: 0.15rem 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  background-color: #b45309;
+  border-radius: 999px;
+}
+
+.book__title {
+  margin-bottom: 0.25rem;
+}
+
+.book__author {
+  margin-bottom: 0.5rem;
+  font-style: italic;
+}
+
+.book__status {
+  flex: 1;
+}

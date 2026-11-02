@@ -480,3 +480,8 @@ body.no-scroll {
 .books__empty {
   font-weight: 700;
 }
+
+/* Таблиця на вузькому екрані прокручується всередині обгортки, а не розтягує сторінку */
+.table-wrap {
+  overflow-x: auto;
+}

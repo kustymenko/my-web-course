@@ -150,3 +150,43 @@ function topRated(movies, n) {
 function releasedAfter(movies, year) {
   return movies.filter((movie) => movie.year > year);
 }
+
+// Округлення до 2 знаків, щоб прибрати похибку плаваючої коми
+function round2(x) {
+  return Math.round(x * 100) / 100;
+}
+
+// 3. Загальні збори по жанрах (млн $) через reduce
+function boxOfficeByGenre(movies) {
+  const totals = movies.reduce((acc, movie) => {
+    acc[movie.genre] = (acc[movie.genre] || 0) + movie.boxOffice;
+    return acc;
+  }, {});
+  // Округлюємо суми вже після підрахунку
+  return Object.fromEntries(
+    Object.entries(totals).map(([genre, sum]) => [genre, round2(sum)]),
+  );
+}
+
+// 4. Середній рейтинг режисера (2 знаки) або повідомлення, якщо його немає
+function directorRating(movies, director) {
+  const films = movies.filter((movie) => movie.director === director);
+  if (films.length === 0) {
+    return 'Режисера не знайдено';
+  }
+  const sum = films.reduce((acc, movie) => acc + movie.rating, 0);
+  return round2(sum / films.length);
+}
+
+// 5. Найкасовіший рік: { year, total }
+function bestYear(movies) {
+  const byYear = movies.reduce((acc, movie) => {
+    acc[movie.year] = (acc[movie.year] || 0) + movie.boxOffice;
+    return acc;
+  }, {});
+  // Ключі об'єкта — рядки, тому рік переводимо назад у число
+  const [year, total] = Object.entries(byYear).reduce((best, entry) =>
+    entry[1] > best[1] ? entry : best,
+  );
+  return { year: Number(year), total: round2(total) };
+}

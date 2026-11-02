@@ -64,3 +64,77 @@ password.addEventListener('input', () => {
     validateField(confirmInput);
   }
 });
+
+// Підписники: зберігаємо в localStorage масив { name, email, age, registeredAt }
+const STORAGE_KEY = 'subscribers';
+const subscribersList = document.getElementById('subscribers-list');
+const subscribersEmpty = document.getElementById('subscribers-empty');
+const successMessage = document.getElementById('success-message');
+
+function loadSubscribers() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    return Array.isArray(saved) ? saved : [];
+  } catch {
+    return [];
+  }
+}
+
+// Малюємо список; дані користувача вставляємо через textContent, не innerHTML
+function renderSubscribers() {
+  const subscribers = loadSubscribers();
+  subscribersList.replaceChildren();
+  subscribers.forEach((person) => {
+    const item = document.createElement('li');
+
+    const name = document.createElement('span');
+    name.className = 'subscribers__name';
+    name.textContent = person.name;
+
+    const details = document.createElement('div');
+    details.textContent = `${person.email} · ${person.age} р. · ${person.registeredAt}`;
+
+    item.append(name, details);
+    subscribersList.append(item);
+  });
+  subscribersEmpty.hidden = subscribers.length > 0;
+}
+
+// Після успішної відправки: очистити форму і прибрати всі стани полів
+function resetForm() {
+  form.reset();
+  fields.forEach((input) => {
+    input.classList.remove('valid', 'invalid');
+    input.removeAttribute('aria-invalid');
+    document.getElementById(`${input.id}-error`).textContent = '';
+  });
+}
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  // Перевіряємо ВСІ поля (map, а не some, щоб помилки показались у кожного)
+  const results = fields.map((input) => validateField(input));
+  if (results.includes(false)) {
+    fields.find((input) => input.classList.contains('invalid')).focus();
+    return;
+  }
+
+  const subscribers = loadSubscribers();
+  // Пароль нікуди не зберігаємо
+  subscribers.push({
+    name: document.getElementById('name').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    age: Number(document.getElementById('age').value),
+    registeredAt: new Date().toLocaleString('uk-UA'),
+  });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(subscribers));
+
+  resetForm();
+  renderSubscribers();
+
+  successMessage.classList.add('visible');
+  setTimeout(() => successMessage.classList.remove('visible'), 3000);
+});
+
+renderSubscribers();

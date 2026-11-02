@@ -4,6 +4,9 @@ const addForm = document.getElementById('add-form');
 const newItemInput = document.getElementById('new-item');
 const list = document.getElementById('list');
 const emptyMessage = document.getElementById('empty');
+const filtersBox = document.getElementById('filters');
+const counter = document.getElementById('counter');
+const clearButton = document.getElementById('clear-completed');
 
 // Масив — єдине джерело правди: { id, text, completed }
 let items = loadItems();
@@ -30,7 +33,29 @@ function update() {
 
 // Книги, які проходять поточний фільтр
 function getVisibleItems() {
+  if (currentFilter === 'active') {
+    return items.filter((item) => !item.completed);
+  }
+  if (currentFilter === 'completed') {
+    return items.filter((item) => item.completed);
+  }
   return items;
+}
+
+// Відмінювання: 1 книга, 2 книги, 5 книг (11–14 — «книг»)
+function pluralize(n) {
+  const lastTwo = n % 100;
+  const last = n % 10;
+  if (lastTwo >= 11 && lastTwo <= 14) {
+    return 'книг';
+  }
+  if (last === 1) {
+    return 'книга';
+  }
+  if (last >= 2 && last <= 4) {
+    return 'книги';
+  }
+  return 'книг';
 }
 
 function render() {
@@ -63,6 +88,20 @@ function render() {
   });
 
   emptyMessage.hidden = visible.length > 0;
+
+  // Лічильник рахує всі непрочитані книги, незалежно від фільтра
+  const activeCount = items.filter((item) => !item.completed).length;
+  counter.textContent = `Залишилось прочитати: ${activeCount} ${pluralize(activeCount)}`;
+
+  // Кнопка «Очистити прочитані» видима лише коли є прочитані
+  clearButton.hidden = !items.some((item) => item.completed);
+
+  // Підсвічуємо активний фільтр
+  filtersBox.querySelectorAll('.filter').forEach((button) => {
+    const isActive = button.dataset.filter === currentFilter;
+    button.classList.toggle('active', isActive);
+    button.setAttribute('aria-pressed', isActive);
+  });
 }
 
 // Додавання: submit спрацьовує і на клік «Додати», і на Enter
@@ -105,6 +144,21 @@ list.addEventListener('click', (e) => {
   } else if (e.target.closest('.item__text')) {
     toggleItem(id);
   }
+});
+
+// Фільтри змінюють лише відображення, дані в масиві лишаються
+filtersBox.addEventListener('click', (e) => {
+  const button = e.target.closest('.filter');
+  if (!button) {
+    return;
+  }
+  currentFilter = button.dataset.filter;
+  render();
+});
+
+clearButton.addEventListener('click', () => {
+  items = items.filter((item) => !item.completed);
+  update();
 });
 
 render();

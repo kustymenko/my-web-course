@@ -78,4 +78,33 @@ addForm.addEventListener('submit', (e) => {
   update();
 });
 
+function toggleItem(id) {
+  const item = items.find((entry) => entry.id === id);
+  item.completed = !item.completed;
+  update();
+}
+
+function deleteItem(id) {
+  // Видаляємо з масиву, а не лише з DOM
+  items = items.filter((entry) => entry.id !== id);
+  update();
+}
+
+// Один слухач на весь список (делегування подій)
+list.addEventListener('click', (e) => {
+  const li = e.target.closest('.item');
+  if (!li) {
+    return;
+  }
+  const id = Number(li.dataset.id);
+
+  if (e.target.closest('.delete')) {
+    deleteItem(id);
+  } else if (e.target.matches('input[type="checkbox"]')) {
+    toggleItem(id);
+  } else if (e.target.closest('.item__text')) {
+    toggleItem(id);
+  }
+});
+
 render();
